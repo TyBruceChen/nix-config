@@ -15,7 +15,7 @@
   boot.loader.grub.device = "/dev/sdb";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "local_server"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -151,6 +151,14 @@
     };
   };
 
-  programs.zsh.enable = true;
+  users.users.tyeli = {
+	openssh.authorizedKeys.keys = [
+          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAybMbbEzlZXgbc27CjcqN2ZpC0Ir/BPm5frPI9Gf3WB ty_bruce.chen@outlook.com"
+        ];
+  };
 
+  programs.zsh.enable = true;
+  environment.variables = {
+	NH_FLAKE = "/home/tyeli/Documents/nix-config";	
+  };
 }
