@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./../home-manager
+    ./../homeManagerModules
   ];
 
   home.username = "tyeli";

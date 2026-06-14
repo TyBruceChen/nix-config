@@ -28,22 +28,37 @@
         ];
       };
     };
-    /*homeManagerModules.default = import ./homeManagerModules;
+
+    #home-manager configurations:
+    homeManagerModules.default = import ./homeManagerModules; 
     homeConfigurations = {
-      wsl = inputs.home-manager.lib.homeManagerConfiguration {
+    ls_ubuntu = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";
         };
         modules = [
-          ./wsl/home.nix
+          ./ls_ubuntu/home.nix
           self.homeManagerModules.default
         ];
         extraSpecialArgs = {
           inherit inputs;
-          tag = "wsl";
+          tag = "ls_ubuntu";
+        };
+      };
+    uno_q = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-linux";
+        };
+        modules = [
+          ./uno_q/home.nix
+          self.homeManagerModules.default
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+          tag = "uno_q";
         };
       };
     };
-    */
-  };
+
+  }; 
 }

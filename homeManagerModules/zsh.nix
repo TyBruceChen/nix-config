@@ -1,16 +1,18 @@
 {
-    pkgs,
-    lib,
     config,
+    pkgs,
+    lib, 
     ...
-  }: let
+  }:  
+ let
     rebuild-nix = pkgs.writeShellScript "rebuild-nix.sh" (
       builtins.readFile ./data/rebuild.sh
     ); 
     p10k =
       pkgs.writeText ".p10k.zsh" (builtins.readFile ./data/.p10k16.zsh);
-  in {
-    
+ in {
+  options.hm.zsh.enable = lib.mkEnableOption "zsh customization";
+  config = lib.mkIf config.hm.zsh.enable {
       home.packages = with pkgs; [nh alejandra];
       programs.zsh = {
         enable = true;
@@ -57,7 +59,7 @@
         DISABLE_AUTO_TITLE = "true";
       };
       home.sessionPath = [
-        "/home/tyeli/.local/bin"
+        "${config.home.homeDirectory}/.local/bin"
       ];
       programs.eza.enable = true;
       programs.bat = {
@@ -66,5 +68,6 @@
           paging = "never";
           style = "plain";
         };
-      };
+  };
+  };
 }

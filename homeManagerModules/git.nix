@@ -1,6 +1,6 @@
-{...}:{
-	programs.git = {
-        enable = true;
+{lib, ...}:{
+    programs.git = {
+        enable = lib.mkDefault false;
         settings = { 
           user = {
             name = "tybruce";
@@ -13,8 +13,12 @@
           #  rebase = true;
           #};
         };
-        #signing = {
+	ignores = [
+		  ".DS_Store"
+		];
+        signing = {
+	  format = "ssh";
         #  signByDefault = config.git.sign;
-        #};
+        };
       };
 }
