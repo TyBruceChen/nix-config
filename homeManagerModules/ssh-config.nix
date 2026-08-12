@@ -39,6 +39,12 @@ in
         User ecs-user
         IdentityFile ~/.ssh/cn_rsa
         IdentitiesOnly yes
+     
+     Host hf.co
+        HostName hf.co
+    	User hf
+    	IdentityFile ~/.ssh/git_general
+    	IdentitiesOnly yes
 
       ${hostBlocks}
     '';
