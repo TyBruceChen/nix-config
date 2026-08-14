@@ -5,9 +5,9 @@
   ...
 }: {
   options = {
-    no-sleep.enable = lib.mkEnableOption "Enable no sleep";
+    nixos-env.no-sleep.enable = lib.mkEnableOption "Disable sleep";
   };
-  config = lib.mkIf config.no-sleep.enable {
+  config = lib.mkIf config.nixos-env.no-sleep.enable {
 	systemd.sleep.settings.Sleep = {
       	AllowSuspend = "no";
       	AllowHibernation = "no";

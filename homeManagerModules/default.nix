@@ -2,10 +2,9 @@
   imports = [
 	./git.nix	
 	./zsh.nix
-	./docker
-        ./git.nix
-        ./ssh-config.nix
-        ./tmux-config.nix
+	./docker 
+	./ssh-config.nix
+	./tmux-config.nix
   ];
   hm.ssh-config.enable = lib.mkDefault false;
   hm.tmux.enable = lib.mkDefault true;

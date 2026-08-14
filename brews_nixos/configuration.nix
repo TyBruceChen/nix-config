@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, inputs, ... }:
 
 {
@@ -12,11 +8,12 @@
 
   # Bootloader.
   boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sdb";
+  boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "local_server"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.hostName = "brews-nixos"; # Define your hostname.
+ 
+   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -67,21 +64,11 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
+	}; 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tyeli = {
+  users.users.brews = {
     isNormalUser = true;
-    description = "tyeli";
+    description = "Brews";
     extraGroups = [ "networkmanager" "wheel" ];
     shell = pkgs.zsh;
   };
@@ -102,43 +89,6 @@
 	git
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  /*services.openssh = {
-	enable = true;
-	settings = {
-	  PermitRootLogin = "no";
-	  PasswordAuthentication = true;
-	};
-  };
-
-  users.users.tyeli = {
-	openssh.authorizedKeys.keyFiles = [
-	  /home/tyeli/Credential/authorizedKeys/general_ssh.pub 
-	];
-  };
-*/
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.11"; # Did you read the comment?
 
   ## customized config
@@ -147,24 +97,26 @@
     useGlobalPkgs = true;
     extraSpecialArgs = {
 	inherit inputs;
-	tag = "tyeli"; #for ssh-config
+	username = "brews";
+	tag = "brews"; #for ssh-config	
 	};
     users = {
-      "tyeli" = import ./home.nix;
+      "brews" = import ./home.nix;
     };
   };
 
-  users.users.tyeli = {
+  users.users.brews = {
 	openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAybMbbEzlZXgbc27CjcqN2ZpC0Ir/BPm5frPI9Gf3WB ty_bruce.chen@outlook.com"
         ];
   };
 
-  programs.zsh.enable = true;
- 	nixos-env.openssh = true; 
-	nixos-env.username = "tyeli";
-	nixos-env.frp = true;
+  programs.zsh.enable = true;	#control nixos login shell, different than programs.zsh.enable in hm
+	
+	# system program/env setup
+	nixos-env.username = "brews";
+	nixos-env.frp.enable = false;
 	environment.variables = {
-	NH_FLAKE = "/home/tyeli/Documents/nix-config";	
+	NH_FLAKE = "/home/brews/Documents/nix-config";	
   };
 }

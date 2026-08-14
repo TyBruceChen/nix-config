@@ -1,4 +1,4 @@
-{ config, lib, tag ? "default", ... }:
+{ config, lib, tag, ... }:
 
 let
   cfg = tag; 

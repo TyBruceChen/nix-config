@@ -14,20 +14,33 @@
     nixpkgs,
     ...
   } @ inputs: {
-    nixosConfigurations = {
-      local_server = nixpkgs.lib.nixosSystem {
-        specialArgs = {
-          inherit inputs;
-          homePath = ./tyeli/home.nix;
-          tag = "tyeli";
-        };
-        modules = [
-          ./tyeli/configuration.nix
-          inputs.home-manager.nixosModules.default
-          ./nixosModules
-        ];
+	nixosConfigurations = {
+		tyeli = nixpkgs.lib.nixosSystem {
+			specialArgs = {
+      	inherit inputs;
+      	homePath = ./tyeli/home.nix;
+      	tag = "tyeli";
+    	};
+    	modules = [
+      	./tyeli/configuration.nix
+      	inputs.home-manager.nixosModules.default
+      	./nixosModules
+    	];
+  	};
+	
+		brews = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs;
+        homePath = ./brew_nixos/home.nix;
+				tag = "brews";
       };
+      modules = [
+        ./brews_nixos/configuration.nix
+        inputs.home-manager.nixosModules.default
+        ./nixosModules
+      ];
     };
+	};
 
     #home-manager configurations:
     homeManagerModules.default = import ./homeManagerModules; 

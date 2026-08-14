@@ -11,5 +11,7 @@
 	btop
   ];
 
+  hm.zsh.enable = true;
+  hm.ssh-config.enable = true;
   programs.home-manager.enable = true;
 }

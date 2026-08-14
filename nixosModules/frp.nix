@@ -1,6 +1,6 @@
 {pkgs, lib, config, ...}:{
-	options.frp.enable = lib.mkEnableOption "Enable frp client service";
-	config = lib.mkIf config.frp.enable {
+	options.nixos-env.frp.enable = lib.mkEnableOption "Enable frp client service for tyeli nixos device to aws us-west frp server";
+	config = lib.mkIf config.nixos-env.frp.enable {
 	  services.frp.instances = {
 	  ssh = {
 	  	enable = true;

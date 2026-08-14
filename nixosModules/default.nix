@@ -4,7 +4,15 @@
 		./no-sleep.nix
 		./frp.nix
 	];
-	openssh.enable = lib.mkDefault true;	
-	no-sleep.enable = lib.mkDefault true;
-	frp.enable = lib.mkDefault true;
+
+	config = {
+	nixos-env.openssh.enable = lib.mkDefault true;	
+	nixos-env.no-sleep.enable = lib.mkDefault true;
+	nixos-env.frp.enable = lib.mkDefault false;
+	};
+
+	options.nixos-env.username = lib.mkOption {
+    		type = lib.types.str;
+    		default = "tyeli";
+  	};		
 }
