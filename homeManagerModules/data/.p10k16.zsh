@@ -1711,3 +1711,14 @@ typeset -g POWERLEVEL9K_CONFIG_FILE=${${(%):-%x}:a}
 
 (( ${#p10k_config_opts} )) && setopt ${p10k_config_opts[@]}
 'builtin' 'unset' 'p10k_config_opts'
+
+## Customized by TyBruce
+printf "Current live tmux session:"
+out="$(tmux ls 2>/dev/null)"
+if [ -z "$out" ]; then
+  printf 'None\n'
+else
+  printf '\n%s\n' "$out"
+fi
+
+echo 'Use reset command to clear gibberish behavior'
