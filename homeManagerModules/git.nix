@@ -10,8 +10,8 @@ in
         enable = true;
         settings = { 
           user = {
-            name = "tybruce";
-            email = "ty_bruce.chen@outlook.com";
+            name = "TyBruceChen";
+            email = "tianyi.bruce.chen@gmail.com";
           };
           init = {
             defaultBranch = "main";
