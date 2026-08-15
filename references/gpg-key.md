@@ -30,3 +30,7 @@ gpg --import secret-subkey.asc
 gpgconf --kill gpg-agent
 gpgconf --launch gpg-agent 
 ```
+
+- git gpg failed to sign the data
+1. check ID matching
+2. rebuild config
