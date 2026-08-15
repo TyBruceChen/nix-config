@@ -28,3 +28,11 @@ For non-NixOS machines, only HomeManager is deployed; For NixOS machines, `home.
 | ls_ubuntu | ubuntu24.04 | #ls_ubuntu |
 | uno_q | debian (aarch) | #uno_q |
 | brews_nixos | nixos | #brews |
+
+## Writing Style
+Option-gated modules
+- Each module exposes an `enable` option.
+- Modules are activated via `*.enable = true` and imported in `default.nix` file.
+- Config is wrapped in `lib.mkIf config.<path>.enable`.
+- This repo uses toggle-based Nix modules.
+- Default settings are in `default.nix` files. Machine-specific settings are in `home.nix` or `nixos-env.*` in `configuration.nix` file.
