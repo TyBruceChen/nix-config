@@ -7,6 +7,7 @@
 	./tmux-config.nix
 	./gpg.nix
   ];
+  hm.git.enable = lib.mkDefault true;
   hm.ssh-config.enable = lib.mkDefault false;
   hm.tmux.enable = lib.mkDefault true;
   hm.docker.enable = lib.mkDefault false;

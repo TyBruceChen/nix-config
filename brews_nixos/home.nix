@@ -8,7 +8,7 @@
   home.stateVersion = "25.05";
 
   home.packages = with pkgs; [
-		
+	btop		
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;

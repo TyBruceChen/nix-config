@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 
 {
   options.hm.gpg.enable = lib.mkEnableOption "GPG agent";
@@ -8,6 +8,8 @@
 
     services.gpg-agent = {
       enable = true;
+	pinentryPackage = pkgs.pinentry-gtk2;
+  	enableSshSupport = false;
     };
   };
 }

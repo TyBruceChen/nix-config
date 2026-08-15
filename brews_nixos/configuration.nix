@@ -7,10 +7,11 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
-
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  # Disable GPU?
+  # boot.blacklistedKernelModules = [ "nouveau" ]; 
+  #
   networking.hostName = "brews-nixos"; # Define your hostname.
  
    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -45,7 +46,7 @@
 
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = true; 
 
   # Configure keymap in X11
   services.xserver.xkb = {

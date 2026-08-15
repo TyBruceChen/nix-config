@@ -11,7 +11,7 @@
  		settings = {
 		AllowUsers = [ "${config.nixos-env.username}" ];
 		PermitRootLogin = "no";
-		PasswordAuthentication = false;
+		PasswordAuthentication = true;
 		};
 
 		};

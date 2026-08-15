@@ -18,6 +18,13 @@ home-manager switch --flake .#tag
 home-manager build --flake .#tag
 ```
 
+`tag` arguement in `flake.nix` is used to pass value to HM modules.
+
+## NixOS Deployment
+- substitute the `boot.loader.*` and 'hardware-configuration.nix' config in `configuration.nix` with current machine's default config in `/etc/nixos/`.
+- Use `nixos-rebuild boot` to save as next bootable os if the test pass however ui crashes.
+- check `README.md` under the specific subfolder for secrect keys deployment.
+
 ## Deployed Machines
 
 For non-NixOS machines, only HomeManager is deployed; For NixOS machines, `home.nix` is used to control the Home Manager Options for the user, along with `nixosModules/` system-level config. 
