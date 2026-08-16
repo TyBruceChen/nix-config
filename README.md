@@ -43,3 +43,6 @@ Option-gated modules
 - Config is wrapped in `lib.mkIf config.<path>.enable`.
 - This repo uses toggle-based Nix modules.
 - Default settings are in `default.nix` files. Machine-specific settings are in `home.nix` or `nixos-env.*` in `configuration.nix` file.
+
+## Clean old system generations
+`nix-collect-garbage --delete-old`

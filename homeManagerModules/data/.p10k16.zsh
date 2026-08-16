@@ -1722,3 +1722,5 @@ else
 fi
 
 echo 'Use reset command to clear gibberish behavior'
+
+alias shelltree='pstree -s -p "$$"'

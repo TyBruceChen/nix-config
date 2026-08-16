@@ -6,7 +6,9 @@
 	./ssh-config.nix
 	./tmux-config.nix
 	./gpg.nix
+  	./vim.nix
   ];
+  hm.vim.enable = lib.mkDefault true;
   hm.git.enable = lib.mkDefault true;
   hm.ssh-config.enable = lib.mkDefault false;
   hm.tmux.enable = lib.mkDefault true;
