@@ -117,7 +117,8 @@
 	# system program/env setup
 	nixos-env.username = "brews";
 	nixos-env.frp.enable = true;
-	environment.variables = {
+  nixos-env.docker.enable = true;
+  environment.variables = {
 	NH_FLAKE = "/home/brews/Documents/nix-config";	
   };
 }

@@ -53,6 +53,27 @@ in
             ];
           };
         };
+      openwebui = {
+        enable = true;
+        role = "client";
+
+        settings = {
+        serverAddr = "us-west.tybruce.com";
+        serverPort = 9901;
+
+        proxies = [
+          {
+            name = "openweb_ui_http Server Communication Only";
+            type = "tcp";
+            localIP = "127.0.0.1";
+            localPort = 9081;
+            remotePort = 10001;
+          }
+        ];
+        };
+      };
+
+
       };
   };
 }
