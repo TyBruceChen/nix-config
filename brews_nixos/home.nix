@@ -10,7 +10,8 @@
   home.packages = with pkgs; [
     btop
     psmisc
-    opencode    
+    opencode   
+    p7zip 
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
