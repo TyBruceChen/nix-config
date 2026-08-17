@@ -50,14 +50,14 @@ in
         HostName us-west.tybruce.com
         Port 9006
         User tydaniel-bybruce
-        IdentityFile ~/.ssh/general_ssh/general_id_ed25519
+        IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes 
        
       Host brews
         HostName us-west.tybruce.com
         Port 9012
         User brews
-        IdentityFile ~/.ssh/general_ssh/general_id_ed25519
+        IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes
 
       ${hostBlocks}
