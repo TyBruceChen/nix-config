@@ -21,7 +21,7 @@ home-manager build --flake .#tag
 `tag` arguement in `flake.nix` is used to pass value to HM modules.
 
 ## NixOS Deployment
-- substitute the `boot.loader.*` and 'hardware-configuration.nix' config in `configuration.nix` with current machine's default config in `/etc/nixos/`.
+- substitute the `boot.loader.*` and `hardware-configuration.nix` config in `configuration.nix` with current machine's default config in `/etc/nixos/`.
 - Use `nixos-rebuild boot` to save as next bootable os if the test pass however ui crashes.
 - check `README.md` under the specific subfolder for secrect keys deployment.
 

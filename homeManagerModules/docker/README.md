@@ -23,7 +23,8 @@ docker compose <path> up -d
         1. stop the program; 
         2. remove all `webui*` file in the bind-mounted location/ volume (default usually are `/var/lib/docker/volumes/open-webui_open-webui/_data/https://us-west.tybruce.com:9443/
 `), check with `ls`  
-        3. copy from environment, e.g.: `~/miniconda3/envs/services/lib/python3.12/site-packages/open_webui/data/` 3. paste into mounted location
+        3. copy from environment, e.g.: `~/miniconda3/envs/services/lib/python3.12/site-packages/open_webui/data/` 
+        4. paste into mounted location
 
 - core-keeper:
     - bind-mounted folder name: `./core-keeper-dedicated`, `./core-keeper-data`
