@@ -7,4 +7,4 @@
 
 ## Secrect Keys
 - ssh
-- gpg key: check [references/gpg-key.md](references/gpg-key.md)
+- gpg key: check [references/gpg-key.md](../references/gpg-key.md)
