@@ -1725,3 +1725,5 @@ echo 'Use reset command to clear gibberish behavior'
 
 alias shelltree='pstree -s -p "$$"'
 alias core-keeper-id='sudo docker exec -it core-keeper cat /home/steam/core-keeper-dedicated/GameID.txt'
+
+

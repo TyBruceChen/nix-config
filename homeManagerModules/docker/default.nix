@@ -12,6 +12,7 @@
     # This creates a symlink pointing directly to your local file
     xdg.configFile."docker/open-webui/docker-compose.yml".source = ./open-webui.yml;
     xdg.configFile."docker/core-keeper/docker-compose.yml".source = ./core-keeper.yml;
+    xdg.configFile."docker/palworld/docker-compose.yml".source = ./palworld.yml;
 
     home.sessionVariables = {
       DOCKER_HOST = "unix:///var/run/docker.sock";

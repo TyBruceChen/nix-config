@@ -27,7 +27,7 @@ services:
       SERVER_IP: ""
       # Port and Password are only needed if using direct connect mode
       # SERVER_PORT: "27015"
-      PASSWORD: ""
+      PASSWORD: "${CK_PWD}"
       ACTIVATE_ALL_CONTENT: "false"
       DISCORD_WEBHOOK_URL: "${DISCORD_WEBHOOK_URL}"
       # Player Join

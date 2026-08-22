@@ -17,19 +17,21 @@ docker compose <path> up -d
 
 
 ## Docker specification
-- open-webui:
+- [open-webui](https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml):
     - bind-mounted folder name: `./open-webui-data` 
     - tranfer from pip (Python package manager): 
         1. stop the program; 
         2. remove all `webui*` file in the bind-mounted location/ volume (default usually are `/var/lib/docker/volumes/open-webui_open-webui/_data/https://us-west.tybruce.com:9443/
 `), check with `ls`  
         3. copy from environment, e.g.: `~/miniconda3/envs/services/lib/python3.12/site-packages/open_webui/data/` 
-        4. paste into mounted location
+        4. paste into mounted location 
 
-- core-keeper:
+- [core-keeper](https://github.com/escapingnetwork/core-keeper-dedicated):
     - bind-mounted folder name: `./core-keeper-dedicated`, `./core-keeper-data`
     - query the game ID: `docker exec -it core-keeper-dedicated cat /home/steam/core-keeper-dedicated/GameID.txt`
     - Modified argument: `WORLD_NAME`, `DISCORD_WEBHOOK_URL`
+    - .env file (required): `PASSWORD`; (optional: ) `DISCORD_WEBHOOK_URL`
 
-
- 
+- [palworld](https://github.com/thijsvanloef/palworld-server-docker):
+    - bind-mounted folder name: `./palworld`  
+    - .env file variables (required): `SERVER_NAME`, `SERVER_PASSWORD`, `ADMIN_PASSWORD`; (optional:) `DISCORD_WEBHOOK_URL`

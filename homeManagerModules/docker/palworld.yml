@@ -1,0 +1,42 @@
+services:
+   palworld:
+      image: thijsvanloef/palworld-server-docker:latest
+      restart: unless-stopped
+      container_name: palworld
+      stop_grace_period: 30s # Set to however long you are willing to wait for the container to gracefully stop
+      ports:
+        - 8211:8211/udp
+        - 27015:27015/udp
+        # - 8212:8212/tcp  # REST API enabled port, enabled by default. DO NOT PORT FORWARD THIS.
+      environment:
+         PUID: 1000
+         PGID: 1000
+         PORT: 8211 # Optional but recommended
+         PLAYERS: 8 # Optional but recommended
+         SERVER_PASSWORD: "${SERVER_PASSWORD}" # Optional but recommended
+         REST_API_ENABLED: true
+         REST_API_PORT: 8212
+         TZ: "UTC"
+         ADMIN_PASSWORD: "${ADMIN_PASSWORD}"
+         COMMUNITY: true  # Enable this if you want your server to show up in the community servers tab, USE WITH SERVER_PASSWORD!
+         # PUBLIC_PORT: 8211 # If enabling community server and using a different public port you must change this
+         SERVER_NAME: "${SERVER_NAME}"
+         SERVER_DESCRIPTION: "Make your pale world palword!"
+         CROSSPLAY_PLATFORMS: "(Steam,Xbox,PS5,Mac)"
+         AUTO_UPDATE_ENABLED: true  #Enables automatic updates
+         DISCORD_WEBHOOK_URL: "${DISCORD_WEBHOOK_URL}"
+         DISCORD_SUPPRESS_NOTIFICATIONS: true
+         NIGHTTIME_SPEEDRATE: 3.0
+         EXP_RATE: 2.0
+         PAL_CAPTURE_RATE: 1.5
+         PLAYER_STAMINA_DECREASE_RATE: 0.5
+         PLAYER_STOMACH_DECREASE_RATE: 0.5
+         BUILD_OBJECT_DETERIORATION_DAMAGE_RATE: 0.1
+         COLLECTION_OBJECT_RESPAWN_SPEED_RATE: 2.0
+         COLLECTION_DROP_RATE: 2.0
+         ENEMY_DROP_ITEM_RATE: 2.0
+         ENABLE_PLAYER_TO_PLAYER_DAMAGE: false
+         DROP_ITEM_MAX_NUM: 1500
+         IS_MULTIPLAY: true
+      volumes:
+         - ./palworld:/palworld/
