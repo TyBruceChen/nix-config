@@ -6,15 +6,17 @@ Stored at `.config/docker/<name>/`
 
 ## Mount drive info
 - Bind mounts: stored at relative path (under `~/.config/docker/container_name/`), check the compose file for the folder name.
-- Docker volume: mMunted volumes can be checked through: `sudo docker volume ls`
+- Docker volume: Mounted volumes can be checked through: `sudo docker volume ls`
 By specify the volume name, the mounted path can be checked by: `sudo docker volume inspect <volume name>`
 
 ## Update container
 ```
 docker pull <image_name>:<tag>
-docker compose <path> up -d
+docker compose <path> up -d #this will recreate the container
 ```
 
+## Load environmental secret variable for the continer
+Stored at `./.env`, not commited to git repo
 
 ## Docker specification
 - [open-webui](https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml):
