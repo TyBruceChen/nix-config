@@ -15,6 +15,8 @@
   #tmux.enable = true; 
   hm.ssh-config.enable = true;
   hm.zsh.enable = true;
+  hm.gpg.enable = true;
+  hm.vim.enable = true;
   home.sessionVariables = {
     #EDITOR = "nvim";
     #NIXPKGS_ALLOW_UNFREE = 1;
@@ -23,6 +25,5 @@
   programs = {
     #bash.enable = true;
     home-manager.enable = true;
-    git.enable = true;
   };
 }

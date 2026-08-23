@@ -16,6 +16,12 @@
         set tabstop=2
         set shiftwidth=2
         set expandtab
+
+        " this line is a comment: Restore cursor position when reopening a file 
+      autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \   execute "normal! g'\"" |
+        \ endif
       '';
     };
   };
