@@ -1,10 +1,10 @@
 ## Current Deployed Machine
+- OptiPlex 7050 SFF
+- i7-6700 CPU
+- DDR4 32GB 2133 RAM 
 
-- Dell 7470 AIO
-- i5-9500 CPU
-- GTX-1050 GPU
-- 16GB DDR4 RAM
 
 ## Secrect Keys
 - ssh
 - gpg key: check [references/gpg-key.md](../references/gpg-key.md)
+
