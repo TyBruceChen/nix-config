@@ -1713,6 +1713,8 @@ typeset -g POWERLEVEL9K_CONFIG_FILE=${${(%):-%x}:a}
 'builtin' 'unset' 'p10k_config_opts'
 
 ## Customized by TyBruce
+export GPG_TTY="$(tty)"
+
 printf "Current live tmux session:"
 out="$(tmux ls 2>/dev/null)"
 if [ -z "$out" ]; then
