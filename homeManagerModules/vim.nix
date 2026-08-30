@@ -22,6 +22,11 @@
         \ if line("'\"") > 0 && line("'\"") <= line("$") |
         \   execute "normal! g'\"" |
         \ endif
+
+        " Enable syntax highlighting
+        syntax on
+        " Tell Vim to use 256 colors
+        set t_Co=256
       '';
     };
   };
