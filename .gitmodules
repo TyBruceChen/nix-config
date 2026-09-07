@@ -1,0 +1,3 @@
+[submodule ".opencode/skills/nix-flake-config"]
+	path = .opencode/skills/nix-flake-config
+	url = git@github.com:TyBruceChen/SKILL-nix-flake-config.git
