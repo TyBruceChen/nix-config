@@ -11,7 +11,9 @@
     btop
     psmisc
     opencode   
-    p7zip 
+    p7zip
+    go
+    bun 
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
