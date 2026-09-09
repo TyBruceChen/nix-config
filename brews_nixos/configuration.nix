@@ -93,6 +93,7 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
   ## customized config
+  boot.tmp.cleanOnBoot = true;
   nix.settings.experimental-features = ["nix-command" "flakes"]; 
     home-manager = {
     useGlobalPkgs = true;
