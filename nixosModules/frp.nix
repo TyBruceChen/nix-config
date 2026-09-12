@@ -72,21 +72,21 @@ in
           ];
           };
         };
-        englineer = {
+        englineer-api = {
           enable = true;
           role = "client";
 
           settings = {
           serverAddr = "us-west.tybruce.com";
-          serverPort = 9029;
+          serverPort = 9902;
 
           proxies = [
             {
               name = "App englineer backend Server Communication Only";
               type = "tcp";
               localIP = "127.0.0.1";
-              localPort = 3000;
-              remotePort = 9030;
+              localPort = 9030;
+              remotePort = 10002;
             }
           ];
           };

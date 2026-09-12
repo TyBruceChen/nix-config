@@ -60,6 +60,13 @@ in
         IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes
 
+      Host us-west-aws
+        HostName us-west.tybruce.com
+        User ubuntu
+        IdentityFile ~/.ssh/general_id_ed25519
+        IdentitiesOnly yes
+
+
       ${hostBlocks}
     '';
   };
