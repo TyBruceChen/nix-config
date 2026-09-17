@@ -44,5 +44,11 @@ Option-gated modules
 - This repo uses toggle-based Nix modules.
 - Default settings are in `default.nix` files. Machine-specific settings are in `home.nix` or `nixos-env.*` in `configuration.nix` file.
 
+## Config with AI
+Install the SKILL in `.opencode/skills/nix-flake-config`
+```
+git submodule update --init
+```
+
 ## Clean old system generations
 `nix-collect-garbage --delete-old`
