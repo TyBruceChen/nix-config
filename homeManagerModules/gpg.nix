@@ -8,7 +8,7 @@
 
     services.gpg-agent = {
       enable = true;
-  	  pinentryPackage = pkgs.pinentry-gtk2;
+  	  pinentryPackage = pkgs.pinentry-gnome3; #pinentry-gtk2 removed
       enableSshSupport = false;
       # 30 days, in seconds
       defaultCacheTtl = 2592000;

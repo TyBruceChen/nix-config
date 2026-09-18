@@ -4,6 +4,7 @@
 		./no-sleep.nix
 		./frp.nix
     ./docker.nix
+    ./tailscale.nix
   ];
 
 	config = {
@@ -11,6 +12,7 @@
 	nixos-env.no-sleep.enable = lib.mkDefault true;
 	nixos-env.frp.enable = lib.mkDefault false;
   nixos-env.docker.enable = lib.mkDefault false;
+  nixos-env.tailscale.enable = lib.mkDefault false;
   };
 
 	options.nixos-env.username = lib.mkOption {

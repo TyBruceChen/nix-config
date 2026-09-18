@@ -119,6 +119,7 @@
 	nixos-env.username = "brews";
 	nixos-env.frp.enable = true;
   nixos-env.docker.enable = true;
+  nixos-env.tailscale.enable = true;
   environment.variables = {
 	NH_FLAKE = "/home/brews/Documents/nix-config";	
   };
