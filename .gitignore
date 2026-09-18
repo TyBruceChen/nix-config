@@ -1,3 +1,4 @@
 #result*	#ignore generated symlink
 result/
 result
+.*/

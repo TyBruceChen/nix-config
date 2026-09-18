@@ -13,7 +13,8 @@
     opencode   
     p7zip
     go
-    bun 
+    bun
+    codex 
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
