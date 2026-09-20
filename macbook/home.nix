@@ -15,9 +15,7 @@
   hm.vim.enable = true;
   hm.tmux.enable = true;
   hm.zsh.enable = true;
-  # The shared agent uses Linux/GNOME pinentry; keep Mac agent setup separate.
-  hm.gpg.enable = false;
-  programs.gpg.enable = true;
+  hm.gpg.enable = true;
   # Docker Desktop, OrbStack, or Colima must be managed separately on macOS.
   hm.docker.enable = false;
 

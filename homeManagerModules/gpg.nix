@@ -8,9 +8,12 @@
 
     services.gpg-agent = {
       enable = true;
-  	  pinentryPackage = pkgs.pinentry-gnome3; #pinentry-gtk2 removed
+      pinentry.package = if pkgs.stdenv.hostPlatform.isDarwin then
+        pkgs.pinentry_mac
+      else pkgs.pinentry-gnome3;
       enableSshSupport = false;
-      # 30 days, in seconds
+      # Cache for 30 days of inactivity, capped at 30 days since entry creation.
+      # Agent restarts/reboots clear the in-memory cache earlier.
       defaultCacheTtl = 2592000;
       maxCacheTtl = 2592000;
 

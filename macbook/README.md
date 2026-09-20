@@ -25,11 +25,15 @@ Poppler, Tectonic, TeX Live, Verilator, and the Codex CLI cask) are not migrated
 or declared here. Transitive dependencies are omitted. No existing `mas`
 management was found, so no Mac App Store entries are introduced.
 
-GnuPG CLI is enabled separately from `hm.gpg`: the shared module's GNOME pinentry
-and agent setup are left disabled on Mac. No Mac pinentry or managed agent is
-configured; interactive secret-key operations may need separate agent/pinentry
-setup. Linux GPG behavior is unchanged. Docker support is disabled here; manage
-Docker Desktop, OrbStack, or Colima separately.
+`hm.gpg` manages GnuPG, its agent, and Nix-provided `pinentry_mac` on Mac.
+Linux continues to use GNOME pinentry. The agent caches a passphrase after its
+first entry for up to 30 days (`2592000` seconds), with both the inactivity timeout
+and maximum lifetime set in `homeManagerModules/gpg.nix`. Agent restarts and
+reboots clear the in-memory cache earlier; this is not the GPG key's expiry date.
+The SSH cache settings do not affect OpenPGP Git signing, and SSH-agent support
+remains disabled. Activate the Home Manager configuration to apply changes.
+Docker support is disabled here; manage Docker Desktop, OrbStack, or Colima
+separately.
 
 ## How the Brewfile was created and how to reproduce it
 
