@@ -55,7 +55,7 @@ in
        
       Host brews
         HostName 100.90.187.62  #us-west.tybruce.com
-        Port 9012
+        Port 22 #9012
         User brews
         IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes

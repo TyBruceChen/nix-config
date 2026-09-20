@@ -7,10 +7,10 @@
     ripgrep
     fd
     jq
-    tree
-    tailscale
+    tree 
   ];
 
+  hm.ssh-config.enable = true;
   hm.git.enable = true;
   hm.vim.enable = true;
   hm.tmux.enable = true;
