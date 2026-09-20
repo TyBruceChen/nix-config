@@ -20,7 +20,7 @@ in
   config = lib.mkIf config.hm.ssh-config.enable {
     home.file.".ssh/config".text = ''
       Host Vultr
-        HostName tybruce.com
+        HostName 100.126.51.24  #tybruce.com
         User root
         Port 22
         IdentityFile ~/.ssh/general_id_ed25519
@@ -54,14 +54,14 @@ in
         IdentitiesOnly yes 
        
       Host brews
-        HostName us-west.tybruce.com
+        HostName 100.90.187.62  #us-west.tybruce.com
         Port 9012
         User brews
         IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes
 
       Host us-west-aws
-        HostName us-west.tybruce.com
+        HostName 100.66.203.45  #us-west.tybruce.com
         User ubuntu
         IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes
