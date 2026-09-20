@@ -1,6 +1,6 @@
 {lib, config,  pkgs, tag, ...}:
 let
-  gpgSignTags = [ "brews" "ls_ubuntu"];
+  gpgSignTags = [ "brews" "ls_ubuntu" "macbook"];
   useGpg = builtins.elem tag gpgSignTags;
 in
 {	
@@ -25,11 +25,12 @@ in
 		];
 
       signing = if useGpg then {
+        format = "openpgp";
         key = "41A76F2A9138E3BF";
         signByDefault = true;
       } else {
         format = "ssh";
-        signByDefault = false;
+        signByDefault = true;
       };
 
       extraConfig = if useGpg then {

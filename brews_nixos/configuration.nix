@@ -94,6 +94,7 @@
 
   ## customized config
   boot.tmp.cleanOnBoot = true;
+  services.tailscale.enable = true; 
   nix.settings.experimental-features = ["nix-command" "flakes"]; 
     home-manager = {
     useGlobalPkgs = true;

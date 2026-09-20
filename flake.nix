@@ -31,7 +31,7 @@
 		brews = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
-        homePath = ./brew_nixos/home.nix;
+        homePath = ./brews_nixos/home.nix;
 				tag = "brews";
       };
       modules = [
@@ -45,6 +45,19 @@
     #home-manager configurations:
     homeManagerModules.default = import ./homeManagerModules; 
     homeConfigurations = {
+    macbook = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+        };
+        modules = [
+          ./macbook/home.nix
+          self.homeManagerModules.default
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+          tag = "macbook";
+        };
+      };
     ls_ubuntu = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "x86_64-linux";

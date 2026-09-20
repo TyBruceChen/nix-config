@@ -35,6 +35,20 @@ For non-NixOS machines, only HomeManager is deployed; For NixOS machines, `home.
 | ls_ubuntu | ubuntu24.04 | #ls_ubuntu |
 | uno_q | debian (aarch) | #uno_q |
 | brews_nixos | nixos | #brews |
+| [macbook](macbook/README.md) | macOS (Apple Silicon) | #macbook |
+
+## Update Packages
+
+```
+# Update pinned nixpkgs and Home Manager versions
+nix flake update
+
+# Build without activating
+home-manager build --flake .#macbook
+
+# If the build succeeds, activate
+home-manager switch -b hm-backup --flake .#macbook
+```
 
 ## Writing Style
 Option-gated modules

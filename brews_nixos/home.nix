@@ -18,7 +18,7 @@
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
-  	hm.tmux.enable = true;
+  hm.tmux.enable = true;
 	hm.zsh.enable = true;
 	hm.gpg.enable = true;
 	programs.home-manager.enable = true;

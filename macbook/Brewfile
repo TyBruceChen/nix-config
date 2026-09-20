@@ -1,0 +1,11 @@
+# Homebrew owns macOS applications, fonts, and native development tooling.
+# Home Manager owns configured CLI tools. Do not add formulas for:
+# zsh, git, vim, tmux, gnupg, eza, bat, powerlevel10k, nh, alejandra.
+# Apple supplies /bin/zsh; Home Manager supplies Zsh plugins and configuration.
+# Only requested, installed top-level software within this boundary is listed.
+
+brew "cocoapods" # Native Apple-platform development tooling.
+
+cask "flutter" # Installed macOS SDK distribution, paired with CocoaPods.
+cask "font-adwaita-mono-nerd-font"
+cask "signal"

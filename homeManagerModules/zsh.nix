@@ -2,6 +2,7 @@
     config,
     pkgs,
     lib, 
+    tag,
     ...
   }:  
  let
@@ -16,6 +17,8 @@
       home.packages = with pkgs; [nh alejandra];
       programs.zsh = {
         enable = true;
+        # Apple supplies the Darwin login shell; Home Manager supplies its configuration.
+        package = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin null;
 
         oh-my-zsh = {
           enable = true;
@@ -44,15 +47,24 @@
 
         shellAliases = {
           l = "eza --group-directories-first --icons=auto -la";
-          rebuild-nix = "${rebuild-nix}";
+          rebuild-nix = if pkgs.stdenv.hostPlatform.isDarwin then
+            "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/nix-config#${tag}"}"
+          else "${rebuild-nix}";
           rcat = "command cat";
           cat = "bat";
         };
 
-        initContent = ''
+        initContent = lib.mkMerge [
+          (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (lib.mkBefore ''
+            # Run after macOS path_helper and the user's Homebrew login profile.
+            typeset -U path
+            path=(${lib.escapeShellArg "${config.home.profileDirectory}/bin"} $path)
+          ''))
+          ''
             source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
             source ${p10k}
-        '';
+          ''
+        ];
       };
 
       home.sessionVariables = {
