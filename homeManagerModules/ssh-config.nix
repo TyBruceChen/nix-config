@@ -66,6 +66,11 @@ in
         IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes
 
+      Host wsl 
+        HostName 100.82.166.31  #us-west.tybruce.com
+        User ty_br
+        IdentityFile ~/.ssh/tybruce_ed25519 
+        IdentitiesOnly yes
 
       ${hostBlocks}
     '';
