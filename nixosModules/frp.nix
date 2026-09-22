@@ -39,7 +39,7 @@ in
           role = "client";
 
           settings = {
-            serverAddr = "us-west.tybruce.com";
+            serverAddr = "100.66.203.45";
             serverPort = 9011;
 
             proxies = [
@@ -58,7 +58,7 @@ in
           role = "client";
 
           settings = {
-          serverAddr = "us-west.tybruce.com";
+          serverAddr = "100.66.203.45";
           serverPort = 9901;
 
           proxies = [
@@ -77,7 +77,7 @@ in
           role = "client";
 
           settings = {
-          serverAddr = "us-west.tybruce.com";
+          serverAddr = "100.66.203.45";
           serverPort = 9902;
 
           proxies = [
