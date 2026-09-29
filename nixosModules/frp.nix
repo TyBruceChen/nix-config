@@ -14,7 +14,7 @@ in
     services.frp.instances =
       lib.optionalAttrs (enabledForUser [ "tyeli" ]) {
         ssh = {
-          enable = true;
+          enable = false;
           role = "client";
 
           settings = {
@@ -35,7 +35,7 @@ in
       }
       // lib.optionalAttrs (enabledForUser [ "brews" ]) { #`//` here is the merge operator
         ssh = {
-          enable = true;
+          enable = false;
           role = "client";
 
           settings = {
@@ -54,7 +54,7 @@ in
           };
         };
         openwebui = {
-          enable = true;
+          enable = false;
           role = "client";
 
           settings = {
