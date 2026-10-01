@@ -19,7 +19,7 @@ in
 
   config = lib.mkIf config.hm.ssh-config.enable {
     home.file.".ssh/config".text = ''
-      Host Vultr
+      Host Vultr vultr
         HostName 100.126.51.24  #tybruce.com
         User root
         Port 22
