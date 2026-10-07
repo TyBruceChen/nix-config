@@ -14,7 +14,8 @@
     p7zip
     go
     bun
-    codex 
+    codex
+    pandoc  #doc file converter 
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
