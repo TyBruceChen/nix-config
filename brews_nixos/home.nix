@@ -9,13 +9,14 @@
 
   home.packages = with pkgs; [
     btop
-    psmisc
+    psmisc  #process monitor
     opencode   
     p7zip
     go
     bun
     codex
-    pandoc  #doc file converter 
+    pandoc  #doc file converter
+    texliveFull #latex - pdf render engine 
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
