@@ -10,3 +10,5 @@ cask "flutter" # Installed macOS SDK distribution, paired with CocoaPods.
 cask "font-adwaita-mono-nerd-font"
 cask "signal"
 cask "tailscale-app"
+cask "chatgpt-classic"
+cask "chatgpt"
