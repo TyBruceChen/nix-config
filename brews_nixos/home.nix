@@ -16,7 +16,11 @@
     bun
     codex
     pandoc  #doc file converter
-    texliveFull #latex - pdf render engine 
+    texliveFull #latex - pdf render engine
+    rustup
+    # optional C compiler/linker often needed for building crates
+    gcc
+    gnumake
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
