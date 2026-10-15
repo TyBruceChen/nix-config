@@ -47,11 +47,19 @@
 
         shellAliases = {
           l = "eza --group-directories-first --icons=auto -la";
+          newF = "print -rl -- *(D.om[1,5]N)";
           rebuild-nix = if pkgs.stdenv.hostPlatform.isDarwin then
             "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/nix-config#${tag}"}"
           else "${rebuild-nix}";
           rcat = "command cat";
           cat = "bat";
+          workF = "cd ~/Documents/codes/";
+          osF = if pkgs.stdenv.hostPlatform.isDarwin then
+            "cd ~/nix-config/"
+          else "cd ~/Documents/nix-config/";
+        } // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
+          shelltree = "pstree -s -p \"$$\"";
+          core-keeper-id = "sudo docker exec -it core-keeper cat /home/steam/core-keeper-dedicated/GameID.txt";
         };
 
         initContent = lib.mkMerge [
@@ -63,6 +71,18 @@
           ''
             source ${pkgs.zsh-powerlevel10k}/share/zsh-powerlevel10k/powerlevel10k.zsh-theme
             source ${p10k}
+
+            export GPG_TTY="$(tty)"
+
+            printf "Current live tmux session:"
+            out="$(tmux ls 2>/dev/null)"
+            if [ -z "$out" ]; then
+              printf 'None\n'
+            else
+              printf '\n%s\n' "$out"
+            fi
+
+            echo 'Use reset command to clear gibberish behavior'
           ''
         ];
       };

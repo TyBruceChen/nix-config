@@ -97,9 +97,10 @@ type -a git vim tmux zsh gpg eza bat nh alejandra
 Configured CLI tools should resolve through the Nix profile; `zsh` should resolve
 to `/bin/zsh`. Existing custom `.zshrc` content is backed up by the activation
 command below, not imported automatically. Review it for any local Java/nvm or
-other settings you still want. The original `.p10k16.zsh` is preserved, including
-aliases that assume Linux tools or local directories (`shelltree`,
-`core-keeper-id`, `workF`, `osF`); those helpers require their prerequisites.
+other settings you still want. `.p10k16.zsh` contains the prompt configuration;
+custom startup commands and aliases live in `homeManagerModules/zsh.nix`.
+`shelltree` and `core-keeper-id` are Linux-only. `workF` uses
+`~/Documents/codes`, and `osF` uses `~/nix-config` on macOS.
 
 The Mac `rebuild-nix` alias runs `home-manager switch --flake
 '/Users/tianyi.bruce.chen/nix-config#macbook'`. It derives the home directory and
