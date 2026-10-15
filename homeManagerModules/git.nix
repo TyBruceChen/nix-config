@@ -8,6 +8,7 @@ in
 	config = lib.mkIf config.hm.git.enable {
 	programs.git = {
         enable = true;
+        lfs.enable = true;
         settings = { 
           user = {
             name = "TyBruceChen";
