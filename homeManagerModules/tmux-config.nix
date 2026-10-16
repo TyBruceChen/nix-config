@@ -1,5 +1,11 @@
-{ config, lib, ... }:
+{ config, lib, tag, ... }:
 
+let
+  ctrlQTags = [ "brews" "tydaniel" "tyeli" "uno_q" "ls_ubuntu"];
+  useCtrlQ = builtins.elem tag ctrlQTags;
+  prefix = if useCtrlQ then "C-q" else "C-b";
+  otherPrefix = if useCtrlQ then "C-b" else "C-q";
+in
 {
   options.hm.tmux.enable = lib.mkEnableOption "tmux config";
 
@@ -7,10 +13,9 @@
     programs.tmux = {
       enable = true;
       extraConfig = ''
-        # Set different prefix for remote (nested) sessions, e.g., Ctrl+a
-        set-option -g prefix C-q
-        unbind-key C-b
-        bind-key C-q send-prefix
+        set-option -g prefix ${prefix}
+        unbind-key ${otherPrefix}
+        bind-key ${prefix} send-prefix
 
         # Use Vi-mode for copy navigation
         setw -g mode-keys vi

@@ -20,7 +20,12 @@ in
           #pull = {
           #  rebase = true;
           #};
-        };
+        } // (if useGpg then {
+          commit.gpgsign = true;
+          gpg.program = "${pkgs.gnupg}/bin/gpg";
+        } else {
+          gpg.format = "ssh";
+        });
 	ignores = [
 		  ".DS_Store"
 		];
@@ -32,13 +37,6 @@ in
       } else {
         format = "ssh";
         signByDefault = true;
-      };
-
-      extraConfig = if useGpg then {
-        commit.gpgsign = true;
-        gpg.program = "${pkgs.gnupg}/bin/gpg";
-      } else {
-        gpg.format = "ssh";
       };
 
 	};
