@@ -19,6 +19,7 @@ in
 
         # Use Vi-mode for copy navigation
         setw -g mode-keys vi
+        set -g mouse on
 
         # Explicitly map keys for copy mode
         bind -T copy-mode-vi 'v' send -X begin-selection
