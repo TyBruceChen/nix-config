@@ -8,6 +8,11 @@
     fd
     jq
     tree 
+    rustc
+    cargo
+    rustfmt
+    clippy
+    rust-analyzer
   ];
 
   hm.ssh-config.enable = true;
