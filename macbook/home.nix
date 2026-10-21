@@ -13,6 +13,7 @@
     rustfmt
     clippy
     rust-analyzer
+    ffmpeg
   ];
 
   hm.ssh-config.enable = true;
