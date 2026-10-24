@@ -15,6 +15,8 @@
   #tmux.enable = true;
   #git.sign = false;
 
+  hm.zsh.enable = true;
+
   home.sessionVariables = {
     #EDITOR = "nvim";
     #NIXPKGS_ALLOW_UNFREE = 1;

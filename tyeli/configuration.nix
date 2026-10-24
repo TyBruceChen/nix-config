@@ -161,9 +161,9 @@
   };
 
   programs.zsh.enable = true;
- 	nixos-env.openssh = true; 
+	nixos-env.openssh.enable = true;
 	nixos-env.username = "tyeli";
-	nixos-env.frp = true;
+	nixos-env.frp.enable = true;
 	environment.variables = {
 	NH_FLAKE = "/home/tyeli/Documents/nix-config";	
   };

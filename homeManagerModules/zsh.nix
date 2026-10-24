@@ -11,11 +11,18 @@
     ); 
     p10k =
       pkgs.writeText ".p10k.zsh" (builtins.readFile ./data/.p10k16.zsh);
+    brewsTags = [ "brews" ];
+    tyeliTags = [ "tyeli" ];
+    lsUbuntuTags = [ "ls_ubuntu" ];
+    unoQTags = [ "uno_q" ];
+    macbookTags = [ "macbook" ];
+    wslTags = [ "wsl" ];
+    hasTag = tags: builtins.elem tag tags;
  in {
   options.hm.zsh.enable = lib.mkEnableOption "zsh customization";
   config = lib.mkIf config.hm.zsh.enable {
       home.packages = with pkgs; [nh alejandra];
-      programs.zsh = {
+      programs.zsh = lib.mkMerge [ {
         enable = true;
         # Apple supplies the Darwin login shell; Home Manager supplies its configuration.
         package = lib.mkIf pkgs.stdenv.hostPlatform.isDarwin null;
@@ -48,15 +55,9 @@
         shellAliases = {
           l = "eza --group-directories-first --icons=auto -la";
           newF = "print -rl -- *(D.om[1,5]N)";
-          rebuild-nix = if pkgs.stdenv.hostPlatform.isDarwin then
-            "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/nix-config#${tag}"}"
-          else "${rebuild-nix}";
           rcat = "command cat";
           cat = "bat";
           workF = "cd ~/Documents/codes/";
-          osF = if pkgs.stdenv.hostPlatform.isDarwin then
-            "cd ~/nix-config/"
-          else "cd ~/Documents/nix-config/";
         } // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
           shelltree = "pstree -s -p \"$$\"";
           core-keeper-id = "sudo docker exec -it core-keeper cat /home/steam/core-keeper-dedicated/GameID.txt";
@@ -85,7 +86,44 @@
             echo 'Use reset command to clear gibberish behavior'
           ''
         ];
-      };
+      }
+      (lib.mkIf (hasTag brewsTags) {
+        shellAliases = {
+          rebuild-nix = "${rebuild-nix}";
+          osF = "cd ~/Documents/nix-config/";
+        };
+      })
+      (lib.mkIf (hasTag tyeliTags) {
+        shellAliases = {
+          rebuild-nix = "${rebuild-nix}";
+          osF = "cd ~/Documents/nix-config/";
+        };
+      })
+      (lib.mkIf (hasTag lsUbuntuTags) {
+        shellAliases = {
+          rebuild-nix = "${rebuild-nix}";
+          osF = "cd ~/Documents/nix-config/";
+        };
+      })
+      (lib.mkIf (hasTag unoQTags) {
+        shellAliases = {
+          rebuild-nix = "${rebuild-nix}";
+          osF = "cd ~/Documents/nix-config/";
+        };
+      })
+      (lib.mkIf (hasTag macbookTags) {
+        shellAliases = {
+          rebuild-nix = "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/nix-config#${tag}"}";
+          osF = "cd ~/nix-config/";
+        };
+      })
+      (lib.mkIf (hasTag wslTags) {
+        shellAliases = {
+          rebuild-nix = "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/Documents/nix-config#wsl"}";
+          osF = "cd ~/Documents/nix-config/";
+        };
+      })
+      ];
 
       home.sessionVariables = {
         DISABLE_AUTO_TITLE = "true";

@@ -50,6 +50,10 @@ home-manager build --flake .#macbook
 home-manager switch -b hm-backup --flake .#macbook
 ```
 
+## Zsh Customization
+- Almost every flake entry is configured with zsh (to display it properly, local machine needs to install font [from here](https://github.com/ryanoasis/nerd-fonts)). 
+- To add/ modify the customization, check `homeManagerModules/zsh.nix` file, where `*Tag` is used to identify the machine, then the following merging if-else section defines the customized zsh configurations.
+
 ## Writing Style
 Option-gated modules
 - Each module exposes an `enable` option.
