@@ -58,7 +58,7 @@ home-manager build --flake .#macbook
 home-manager switch -b hm-backup --flake .#macbook
 ```
 
-## Zsh Customization
+## Zsh [theme](https://github.com/romkatv/powerlevel10k) +  Customization
 - Every flake entry enables the shared Home Manager Zsh configuration. Install a [Nerd Font](https://github.com/ryanoasis/nerd-fonts) locally to display the prompt icons.
 - Edit `homeManagerModules/zsh.nix` for common settings or a machine's tag list and `lib.mkIf` section for its own aliases and other Zsh settings.
 
