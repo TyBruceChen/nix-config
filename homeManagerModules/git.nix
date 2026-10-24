@@ -1,6 +1,6 @@
 {lib, config,  pkgs, tag, ...}:
 let
-  gpgSignTags = [ "brews" "ls_ubuntu" "macbook"];
+  gpgSignTags = [ "brews" "ls_ubuntu" "wsl" "macbook"];
   useGpg = builtins.elem tag gpgSignTags;
 in
 {	

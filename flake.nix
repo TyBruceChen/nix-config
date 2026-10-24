@@ -71,6 +71,19 @@
           tag = "ls_ubuntu";
         };
       };
+    wsl = inputs.home-manager.lib.homeManagerConfiguration {
+        pkgs = import nixpkgs {
+          system = "x86_64-linux";
+        };
+        modules = [
+          ./wsl/home.nix
+          self.homeManagerModules.default
+        ];
+        extraSpecialArgs = {
+          inherit inputs;
+          tag = "wsl";
+        };
+      };
     uno_q = inputs.home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-linux";
