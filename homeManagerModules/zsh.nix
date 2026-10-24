@@ -56,12 +56,11 @@
           l = "eza --group-directories-first --icons=auto -la";
           newF = "print -rl -- *(D.om[1,5]N)";
           rcat = "command cat";
-          cat = "bat";
-          workF = "cd ~/Documents/codes/";
+          cat = "bat"; 
         } // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
-          shelltree = "pstree -s -p \"$$\"";
-          core-keeper-id = "sudo docker exec -it core-keeper cat /home/steam/core-keeper-dedicated/GameID.txt";
-        };
+                
+
+       };
 
         initContent = lib.mkMerge [
           (lib.mkIf pkgs.stdenv.hostPlatform.isDarwin (lib.mkBefore ''
@@ -91,6 +90,9 @@
         shellAliases = {
           rebuild-nix = "${rebuild-nix}";
           osF = "cd ~/Documents/nix-config/";
+          workF = "cd ~/Documents/codes/";
+          shelltree = "pstree -s -p \"$$\"";
+          core-keeper-id = "sudo docker exec -it core-keeper cat /home/steam/core-keeper-dedicated/GameID.txt";
         };
       })
       (lib.mkIf (hasTag tyeliTags) {
@@ -115,12 +117,13 @@
         shellAliases = {
           rebuild-nix = "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/nix-config#${tag}"}";
           osF = "cd ~/nix-config/";
+          workF = "cd ~/Documents/github/";
         };
       })
       (lib.mkIf (hasTag wslTags) {
         shellAliases = {
-          rebuild-nix = "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/Documents/nix-config#wsl"}";
-          osF = "cd ~/Documents/nix-config/";
+          rebuild-nix = "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/nix-config#wsl"}";
+          osF = "cd ~/nix-config/";
         };
       })
       ];

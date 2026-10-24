@@ -1,6 +1,7 @@
 ## How to use flake
 
-* NixOS 
+* NixOS
+- Eable flake by adding experimental features `nix.settings.experimental-features = [ "nix-command" "flakes" ];` to `/etc/nix/nix.conf` file 
 ```
 sudo nixos-rebuild test --flake .#tag 
 ```
@@ -9,7 +10,13 @@ sudo nixos-rebuild test --flake .#tag
 sudo nixos-rebuild run --flake .#tag 
 ```
 
-* HomeManager (first install it)
+* HomeManager 
+
+- First time use: 
+  - Enable flake by adding experimental features `experimental-features = nix-command flakes fetch-tree` in `/etc/nix/nix.conf` and `~/.conf/nix/nix.conf`
+  - Run by installing home-manager: `nix run github:nix-community/home-manager/master -- switch -b hm-backup --flake .#wsl
+`  
+
 ```
 home-manager switch --flake .#tag
 ```

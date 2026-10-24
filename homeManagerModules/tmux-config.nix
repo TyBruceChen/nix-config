@@ -1,7 +1,7 @@
 { config, lib, tag, ... }:
 
 let
-  ctrlQTags = [ "brews" "tydaniel" "tyeli" "uno_q" "ls_ubuntu" "wsl"];
+  ctrlQTags = [ "brews" "tydaniel" "tyeli" "uno_q" "ls_ubuntu"];
   useCtrlQ = builtins.elem tag ctrlQTags;
   prefix = if useCtrlQ then "C-q" else "C-b";
   otherPrefix = if useCtrlQ then "C-b" else "C-q";
