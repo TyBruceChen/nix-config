@@ -1,39 +1,28 @@
-## Docker compose file location 
-Stored at `.config/docker/<name>/`
+## Docker Compose files
 
-## Start Docker compose file
-`docker compose -f /path/to/your/compose.yaml up -d`
+When `hm.docker.enable = true`, Home Manager installs Docker Compose and links these files:
 
-## Mount drive info
-- Bind mounts: stored at relative path (under `~/.config/docker/container_name/`), check the compose file for the folder name.
-- Docker volume: Mounted volumes can be checked through: `sudo docker volume ls`
-By specify the volume name, the mounted path can be checked by: `sudo docker volume inspect <volume name>`
+| Service | Compose file | Bind-mounted data |
+| --- | --- | --- |
+| Open WebUI | `~/.config/docker/open-webui/docker-compose.yml` | `./open-webui-data` |
+| Core Keeper | `~/.config/docker/core-keeper/docker-compose.yml` | `./core-keeper-dedicated`, `./core-keeper-data` |
+| Palworld | `~/.config/docker/palworld/docker-compose.yml` | `./palworld` |
 
-## Update container
-```
-docker pull <image_name>:<tag>
-docker compose <path> up -d #this will recreate the container
-```
+Start or update a service with `docker compose -f <path-to-compose-file> up -d`. To pull its image first, run `docker compose -f <path-to-compose-file> pull`.
 
-## Load environmental secret variable for the continer
-Stored at `./.env`, not commited to git repo
+## Environment variables
 
-## Docker specification
-- [open-webui](https://github.com/open-webui/open-webui/blob/main/docker-compose.yaml):
-    - bind-mounted folder name: `./open-webui-data` 
-    - tranfer from pip (Python package manager): 
-        1. stop the program; 
-        2. remove all `webui*` file in the bind-mounted location/ volume (default usually are `/var/lib/docker/volumes/open-webui_open-webui/_data/https://us-west.tybruce.com:9443/
-`), check with `ls`  
-        3. copy from environment, e.g.: `~/miniconda3/envs/services/lib/python3.12/site-packages/open_webui/data/` 
-        4. paste into mounted location 
+Keep secrets in a local `.env` file used by Docker Compose; Home Manager does not create one.
 
-- [core-keeper](https://github.com/escapingnetwork/core-keeper-dedicated):
-    - bind-mounted folder name: `./core-keeper-dedicated`, `./core-keeper-data`
-    - query the game ID: `docker exec -it core-keeper-dedicated cat /home/steam/core-keeper-dedicated/GameID.txt`
-    - Modified argument: `WORLD_NAME`, `DISCORD_WEBHOOK_URL`
-    - .env file (required): `PASSWORD`; (optional: ) `DISCORD_WEBHOOK_URL`
+- Core Keeper: `CK_PWD` and `DISCORD_WEBHOOK_URL` are referenced by the Compose file. `WORLD_NAME` is set directly in that file.
+- Palworld: `SERVER_NAME`, `SERVER_PASSWORD`, `ADMIN_PASSWORD`, and `DISCORD_WEBHOOK_URL` are referenced by the Compose file.
 
-- [palworld](https://github.com/thijsvanloef/palworld-server-docker):
-    - bind-mounted folder name: `./palworld`  
-    - .env file variables (required): `SERVER_NAME`, `SERVER_PASSWORD`, `ADMIN_PASSWORD`; (optional:) `DISCORD_WEBHOOK_URL`
+## Service data
+
+- [Open WebUI](https://github.com/open-webui/open-webui): data is stored in the `open-webui-data` bind mount.
+- [Core Keeper](https://github.com/escapingnetwork/core-keeper-dedicated): read the game ID with `docker exec -it core-keeper cat /home/steam/core-keeper-dedicated/GameID.txt`.
+- [Palworld](https://github.com/thijsvanloef/palworld-server-docker): data is stored in the `palworld` bind mount.
+
+## Existing Open WebUI data
+
+The current Compose file uses `./open-webui-data`. When migrating an older pip or Docker volume installation, stop Open WebUI and inspect the existing data before copying it into that bind mount. An earlier pip installation may store data under `~/miniconda3/envs/services/lib/python3.12/site-packages/open_webui/data/`. Check older named volumes with `docker volume ls` and `docker volume inspect <volume-name>`. Home Manager does not migrate service data.

@@ -23,9 +23,9 @@ home-manager build --flake .#tag
 ## NixOS Deployment
 - substitute the `boot.loader.*` and `hardware-configuration.nix` config in `configuration.nix` with current machine's default config in `/etc/nixos/`.
 - Use `nixos-rebuild boot` to save as next bootable os if the test pass however ui crashes.
-- check `README.md` under the specific subfolder for secrect keys deployment.
+- See [GPG key setup](references/gpg-key.md) and any host-specific README for secret key deployment.
 
-## Deployed Machines
+## Configured Machines
 
 For non-NixOS machines, only HomeManager is deployed; For NixOS machines, `home.nix` is used to control the Home Manager Options for the user, along with `nixosModules/` system-level config. 
 
@@ -33,6 +33,7 @@ For non-NixOS machines, only HomeManager is deployed; For NixOS machines, `home.
 | :--- | :---: | :---: |
 | tyeli | nixos | #tyeli |
 | ls_ubuntu | ubuntu24.04 | #ls_ubuntu |
+| [wsl](wsl/home.nix) | Ubuntu on WSL (x86_64) | #wsl |
 | uno_q | debian (aarch) | #uno_q |
 | brews_nixos | nixos | #brews |
 | [macbook](macbook/README.md) | macOS (Apple Silicon) | #macbook |
@@ -51,8 +52,8 @@ home-manager switch -b hm-backup --flake .#macbook
 ```
 
 ## Zsh Customization
-- Almost every flake entry is configured with zsh (to display it properly, local machine needs to install font [from here](https://github.com/ryanoasis/nerd-fonts)). 
-- To add/ modify the customization, check `homeManagerModules/zsh.nix` file, where `*Tag` is used to identify the machine, then the following merging if-else section defines the customized zsh configurations.
+- Every flake entry enables the shared Home Manager Zsh configuration. Install a [Nerd Font](https://github.com/ryanoasis/nerd-fonts) locally to display the prompt icons.
+- Edit `homeManagerModules/zsh.nix` for common settings or a machine's tag list and `lib.mkIf` section for its own aliases and other Zsh settings.
 
 ## Writing Style
 Option-gated modules
