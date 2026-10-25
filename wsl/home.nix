@@ -15,6 +15,7 @@
     rust-analyzer
     ffmpeg
     codex
+    bubblewrap #codex sandbox for linux
   ];
 
   hm.ssh-config.enable = true;
