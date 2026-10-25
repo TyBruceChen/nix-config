@@ -124,6 +124,8 @@
         shellAliases = {
           rebuild-nix = "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/nix-config#wsl"}";
           osF = "cd ~/nix-config/";
+          UCSB = "cd /mnt/c/Users/ty_br/main_vscode/UCSB/";
+          winF = "cd /mnt/c/Users/ty_br/";
         };
       })
       ];
