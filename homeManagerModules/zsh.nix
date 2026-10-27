@@ -117,6 +117,7 @@
         shellAliases = {
           rebuild-nix = "home-manager switch --flake ${lib.escapeShellArg "${config.home.homeDirectory}/nix-config#${tag}"}";
           osF = "cd ~/nix-config/";
+          UCSB = "cd ~/Documents/UCSB";
           workF = "cd ~/Documents/github/";
         };
       })
