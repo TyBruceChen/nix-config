@@ -7,6 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    lazyvim-starter = {
+      url = "github:LazyVim/starter";
+      flake = false;
+    };
   };
 
   outputs = {
