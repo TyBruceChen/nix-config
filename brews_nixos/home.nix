@@ -32,6 +32,8 @@ in
     # optional C compiler/linker often needed for building crates
     gcc
     gnumake
+    zip
+    unzip
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
