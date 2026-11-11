@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   home.username = "ty_br";
   home.homeDirectory = "/home/ty_br";
   home.stateVersion = "25.05";
@@ -14,7 +14,7 @@
     clippy
     rust-analyzer
     ffmpeg
-    codex
+    inputs.nixpkgs-codex.legacyPackages.${pkgs.stdenv.hostPlatform.system}.codex
     bubblewrap #codex sandbox for linux
   ];
 

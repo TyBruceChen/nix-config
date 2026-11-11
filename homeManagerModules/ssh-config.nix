@@ -19,13 +19,20 @@ in
 
   config = lib.mkIf config.hm.ssh-config.enable {
     home.file.".ssh/config".text = ''
-      Host Vultr vultr
+     Host Vultr vultr
+       HostName 100.126.51.24  #tybruce.com
+       User root
+       Port 22
+       IdentityFile ~/.ssh/general_id_ed25519
+       IdentitiesOnly yes
+     
+    Host sh-git
         HostName 100.126.51.24  #tybruce.com
-        User root
+        User git
         Port 22
         IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes
-      
+ 
      Host github.com
         HostName github.com
         User git
