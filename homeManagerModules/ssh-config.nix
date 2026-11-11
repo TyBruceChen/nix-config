@@ -26,13 +26,20 @@ in
        IdentityFile ~/.ssh/general_id_ed25519
        IdentitiesOnly yes
      
-    Host sh-git
+     Host sh-git
         HostName 100.126.51.24  #tybruce.com
         User git
         Port 22
         IdentityFile ~/.ssh/general_id_ed25519
         IdentitiesOnly yes
- 
+
+     Host sh-git
+        HostName 100.126.51.24  #tybruce.com
+        User git
+        Port 2222
+        IdentityFile ~/.ssh/general_id_ed25519
+        IdentitiesOnly yes 
+
      Host github.com
         HostName github.com
         User git
