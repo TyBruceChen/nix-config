@@ -34,6 +34,7 @@ in
     gnumake
     zip
     unzip
+    verilator
   ];
 	hm.ssh-config.enable = true;
 	hm.docker.enable = true;
