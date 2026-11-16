@@ -16,6 +16,7 @@
     ffmpeg
     inputs.nixpkgs-codex.legacyPackages.${pkgs.stdenv.hostPlatform.system}.codex
     bubblewrap #codex sandbox for linux
+    verilator
   ];
 
   hm.ssh-config.enable = true;
