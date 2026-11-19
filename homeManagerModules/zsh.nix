@@ -57,6 +57,7 @@
           newF = "print -rl -- *(D.om[1,5]N)";
           rcat = "command cat";
           cat = "bat"; 
+          fastpush="git add . && git commit -m \"fast push\" && git push";
         } // lib.optionalAttrs pkgs.stdenv.hostPlatform.isLinux {
                 
 
@@ -82,7 +83,7 @@
               printf '\n%s\n' "$out"
             fi
 
-            echo 'Use reset command to clear gibberish behavior'
+            echo 'Use reset command to clear gibberish behavior' 
           ''
         ];
       }
