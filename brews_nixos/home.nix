@@ -25,6 +25,8 @@ in
     p7zip
     go
     bun
+    uv
+    python315
     codex
     pandoc  #doc file converter
     texliveFull #latex - pdf render engine
